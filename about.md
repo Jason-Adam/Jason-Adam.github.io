@@ -17,8 +17,8 @@ When I'm not studying or reading up on various data science topics, I'm spending
 
 Feel free to contact me by email or through one of the platforms listed at the bottom of every page (icons below).
 
-Cheers,
+Cheers,  
 Jason Adam
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDc1OTgwMjMsNjQ5MDQxNzZdfQ==
+eyJoaXN0b3J5IjpbLTg4NDY1MDUwMyw2NDkwNDE3Nl19
 -->
