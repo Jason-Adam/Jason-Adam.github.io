@@ -9,11 +9,11 @@ Hello, and thanks for reading!  My name is Jason, and if you've managed to stumb
 
 ### Background & Bio
 
-I'm originally from Texas, but I spent most of my life growing up in Wisconsin.  I attended the University 
+I'm originally from Texas, but I spent most of my life growing up in Wisconsin.  I attended U.W. Oshkosh for my undergraduate studies.  Like most kids at 18, I didn't really know what I wanted to do with my life.  I ended up graduating with a degree in Biology but knew that a life in the laboratory was not in where I wanted to be.  
 
 ### Contact me
 
 [Email Me](mailto:22adamj22@gmail.com)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NTg2NTkzOV19
+eyJoaXN0b3J5IjpbMTY2MjQ0NjQ4OF19
 -->
