@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: About Me
 permalink: /about/
 ---
 
@@ -12,4 +12,7 @@ A place to include any other types of information that you'd like to include abo
 
 ### Contact me
 
-[22adamj22@gmail.com](mailto:22adamj22@gmail.com)
+[Email Me](mailto:22adamj22@gmail.com)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNDIxODQ2MjIxXX0=
+-->
