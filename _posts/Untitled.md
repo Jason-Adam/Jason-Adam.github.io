@@ -1,3 +1,9 @@
+---
+layout: post
+mathjax: true
+comments: true
+title: Test
+---
 
 # Test Page
 
