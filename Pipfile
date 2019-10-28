@@ -15,6 +15,7 @@ seaborn = "*"
 ipykernel = "*"
 nltk = "*"
 gensim = "*"
+jupyter-contrib-nbextensions = "*"
 
 [dev-packages]
 
