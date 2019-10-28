@@ -1,3 +1,9 @@
+---
+layout: post
+mathjax: true
+comments: true
+title: Test Post Rendered from Jupyter
+---
 # Test Post Rendered from Jupyter Notebook
 
 
