@@ -16,6 +16,7 @@ ipykernel = "*"
 nltk = "*"
 gensim = "*"
 jupyter-contrib-nbextensions = "*"
+blackcellmagic = "*"
 
 [dev-packages]
 
