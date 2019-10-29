@@ -3,7 +3,7 @@ layout: post
 mathjax: true  
 comments: true  
 title: NLP Text Tokenization  
-categories: [NLP]  
+tags: [NLP]  
 ---
 This is a brief tutorial on manual text tokenization of a document corpus using the `nltk` library.  
 
