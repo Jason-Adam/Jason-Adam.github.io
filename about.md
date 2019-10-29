@@ -19,7 +19,7 @@ I was born in Texas, but I grew up in Wisconsin. I relocated to Phoenix in 2011 
 *Informatics Analyst - Matrix Medical Network from May 2018 to May 2019*  
 * Conducted various analyses, business intelligence gathering, trending and bench-marking. Decision support for high-priority, enterprise initiatives involving IT/product development, Quality Operations, and Clinical Operations.  
 
-**Sr. Analyst - Evolent Health from April 2017 to April 2018**  
+*Sr. Analyst - Evolent Health from April 2017 to April 2018*  
 * Provided ongoing consultation to local client pertaining to revenue capture in capitation payment model, CMS-STARS-HEDIS quality scores, and coding accuracy throughout extensive physician network. Created interactive executive dashboard utilized by internal team and client executive team to drive operational improvement. Development of CMS-STARS-HEDIS quality metrics dashboard. Designed, implemented, & managed provider incentive plan focused on value-based metrics. In-depth analyses of healthcare claims data to identify areas of operational improvement.  
 
 *Decision Support Analyst - HonorHealth from November 2015 to March 2017*  
