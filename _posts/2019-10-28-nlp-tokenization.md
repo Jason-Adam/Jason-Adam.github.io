@@ -1,8 +1,10 @@
 ---
-layout: post
-mathjax: true
-comments: true
-title: NLP Text Tokenization
+layout: post  
+mathjax: true  
+comments: true  
+title: NLP Text Tokenization  
+categories: [nlp]  
+tags: [nlp, preprocessing]
 ---
 This is a brief tutorial on manual text tokenization of a document corpus using the `nltk` library.  
 
@@ -70,35 +72,27 @@ def convert_corpus(collection: list) -> dict:
     return pd.DataFrame(corp)
 ```
 
-The code above creates a connection to the local MongoDB, loops through the document collections and loads all documents with their title and URL as list of tuples. The second function converts the list of tuples to a pandas dataframe.
+The code above creates a connection to the local MongoDB, loops through the document collections and loads all documents with their title and URL as a list of tuples. The second function converts the list of tuples to a pandas dataframe.
 
 
 ```python
 cdf = convert_corpus(COLLECTIONS)
-cdf.shape
+print(cdf.shape)
 ```
-
-
-
 
     (1494, 4)
 
 
-
-We can see that the document loaded correctly and that there are 1,494 of them in the entire corpus. On StackOverflow, questions can have more than one tag, so we'll remove any duplicate documents so that we have independent samples for each class.
+We can see that the documents loaded correctly and that there are 1,494 of them in the entire corpus. On StackOverflow, questions can have more than one tag, so we'll remove any duplicate documents so that we have independent samples for each class.
 
 
 ```python
 cdf.drop_duplicates(subset="url", keep=False, inplace=True)
 cdf.reset_index(inplace=True, drop=True)
-cdf.shape
+print(cdf.shape)
 ```
 
-
-
-
-    (1313, 4)
-
+    (1313, 6)
 
 
 
@@ -178,13 +172,13 @@ cdf.head()
 We can see that we've lost some records but not many.  
 
 ## Tokenization  
-Tokenization is the first step in any NLP pipeline. In general terms, tokenization is the task of segmenting documents. The most common way to tokenize documents is to break them into individual words. Once we break down documents to discrete elements (tokens), we can use them for subsequent modeling and analysis. Some of the main challenges involved with tokenization involve:  
+Tokenization is the first step in any NLP pipeline. In general terms, tokenization is the task of segmenting documents. The most common way to tokenize documents is to break them into individual words. Once we break down documents to discrete elements (tokens), we can use them for subsequent modeling and analysis. Some of the main challenges involved with tokenization are:  
 * Stop words (i.e. the, and, etc.)  
 * Punctuation  
 * Removal of Numbers  
 * Removal of tags (i.e. HTML tags is document is scraped)  
 
-For this particular corpus, I've stripped off all HTML tags during the scraping portion. We will focus on the other components in the next step.  
+For this particular corpus, I've stripped off all HTML tags during the scraping process. We will focus on the other components in the next step.  
 
 
 ```python
@@ -204,7 +198,7 @@ def tokenize_txt(txt: str):
 
 The above function takes in a string (i.e. one of the documents) and first splits it into a list of individual words. The list of words in converted to lowercase, all punctuation is removed, and any numeric values are removed. Stop words are removed before combining the words back together as a cleaned document that can be used in future modeling work via `scikit-learn`, `keras`, `gensim`, etc.  
 
-We could just as easily returned a list of words, but that on it's own isn't as useful.
+We could have just returned a list of words, but that on it's own isn't as useful as the fully cleaned document.
 
 
 ```python
@@ -221,28 +215,20 @@ Below we can see a single document before and after.
 
 
 ```python
-cdf.iloc[0, 3]
+print(cdf.iloc[0, 3])
 ```
 
-
-
-
-    'I have recently stumbled upon the game 2048. You merge similar tiles by moving them in any of the four directions to make "bigger" tiles. After each move, a new tile appears at random empty position with a value of either 2 or 4. The game terminates when all the boxes are filled and there are no moves that can merge tiles, or you create a tile with a value of 2048. One, I need to follow a well-defined strategy to reach the goal. So, I thought of writing a program for it. My current algorithm: What I am doing is at any point, I will try to merge the tiles with values 2 and 4, that is, I try to have 2 and 4 tiles, as minimum as possible. If I try it this way, all other tiles were automatically getting merged and the strategy seems good. But, when I actually use this algorithm, I only get around 4000 points before the game terminates. Maximum points AFAIK is slightly more than 20,000 points which is way larger than my current score. Is there a better algorithm than the above?'
-
+    I have recently stumbled upon the game 2048. You merge similar tiles by moving them in any of the four directions to make "bigger" tiles. After each move, a new tile appears at random empty position with a value of either 2 or 4. The game terminates when all the boxes are filled and there are no moves that can merge tiles, or you create a tile with a value of 2048. One, I need to follow a well-defined strategy to reach the goal. So, I thought of writing a program for it. My current algorithm: What I am doing is at any point, I will try to merge the tiles with values 2 and 4, that is, I try to have 2 and 4 tiles, as minimum as possible. If I try it this way, all other tiles were automatically getting merged and the strategy seems good. But, when I actually use this algorithm, I only get around 4000 points before the game terminates. Maximum points AFAIK is slightly more than 20,000 points which is way larger than my current score. Is there a better algorithm than the above?
 
 
 **After**
 
 
 ```python
-cdf.iloc[0, 4]
+print(cdf.iloc[0, 4])
 ```
 
-
-
-
-    'recently stumbled upon game merge similar tiles moving four directions make bigger tiles move new tile appears random empty position value either game terminates boxes filled moves merge tiles create tile value one need follow welldefined strategy reach goal thought writing program current algorithm point try merge tiles values try tiles minimum possible try way tiles automatically getting merged strategy seems good actually use algorithm get around points game terminates maximum points afaik slightly points way larger current score better algorithm'
-
+    recently stumbled upon game merge similar tiles moving four directions make bigger tiles move new tile appears random empty position value either game terminates boxes filled moves merge tiles create tile value one need follow welldefined strategy reach goal thought writing program current algorithm point try merge tiles values try tiles minimum possible try way tiles automatically getting merged strategy seems good actually use algorithm get around points game terminates maximum points afaik slightly points way larger current score better algorithm
 
 
 ## Summary  
