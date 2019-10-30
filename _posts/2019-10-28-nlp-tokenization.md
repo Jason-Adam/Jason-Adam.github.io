@@ -7,7 +7,7 @@ tags: [NLP]
 ---
 This is a brief tutorial on manual text tokenization of a document corpus using the `nltk` library.  
 
-The corpus used in this tutorial was created by a crawler I wrote utilizing the `scrapy` library. The repo for that project can be found here (https://github.com/Jason-Adam/stack-crawler). The purpose of the crawler was to build a corpus of top StackOverflow questions related to **Artificial Intelligence**, **Machine Learning**, and **NLP** that could be used for further modeling work.  
+The corpus used in this tutorial was created by a crawler I wrote utilizing the `scrapy` library. The repo for that project can be found [here](https://github.com/Jason-Adam/stack-crawler). The purpose of the crawler was to build a corpus of top StackOverflow questions related to **Artificial Intelligence**, **Machine Learning**, and **NLP** that could be used for further modeling work.  
 
 ## Imports
 
