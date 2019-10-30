@@ -175,7 +175,7 @@ Tokenization is the first step in any NLP pipeline. In general terms, tokenizati
 * Stop words (i.e. the, and, etc.)  
 * Punctuation  
 * Removal of Numbers  
-* Removal of tags (i.e. HTML tags is document is scraped)  
+* Removal of tags (i.e. HTML tags if document is scraped)  
 
 For this particular corpus, I've stripped off all HTML tags during the scraping process. We will focus on the other components in the next step.  
 
