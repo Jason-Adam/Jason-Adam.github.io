@@ -6,6 +6,8 @@ title: Binary Search Algorithm
 tags: [Algorithm]  
 ---
 
+This is a brief tutorial on the binary search algorithm.  
+
 Binary search is one of the simplest algorithms. It is designed to find a value within a sorted list by cutting the list in half at every iteration until the value has been found. It has a Big O runtime of $O(\log_2{N})$. This means that the worst case number of operations needed to find a value grows at a logarithmic rate. This is compared to a simple search that checks every item in the list until it finds the desired value. It has a Big O runtime of $O(N)$. The simple search operations grow linearly with the amount of items being searched.  
 
 Let's start off by building each algorithm, and then we'll compare search times and plot their runtimes.
