@@ -184,7 +184,7 @@ plt.show()
 ## Recap  
 * Binary search is a lot faster than simple search.  
 * $O(\log_2 N)$ is faster than $O(N)$, but it gets a lot faster once the list of items you're searching through grows.  
-* Algorithm speed isn't measured in seonds.  
+* Algorithm speed isn't measured in seconds.  
 * Algorithm times are measured in terms of growth of an algorithm.  
 * Algorithm times are written in Big O notation.  
 
