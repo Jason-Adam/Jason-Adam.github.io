@@ -55,7 +55,7 @@ def binary_search(sorted_list: List[int], item: int) -> Tuple[int, int]:
             steps += 1
             high = mid - 1
         # If midway point lower, make
-        # new high one higher than mid-point
+        # new low one higher than mid-point
         else:
             steps += 1
             low = mid + 1
