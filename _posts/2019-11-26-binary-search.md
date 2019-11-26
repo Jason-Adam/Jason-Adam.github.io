@@ -134,7 +134,7 @@ print(
 
 
 ## Big O Evaluation  
-If we plot the Big O runtime of each function we can see the smooth logarithmic curve of the binary search growing to roughly 16 operations over our 100k item list. The simple search on the other hand has a linear runtime and our 100k item list has a worst case scenario of 100k operations (assuming the item was the last in the list). The difference doesn't look as drastic because the graphs have different scaled axis. Let's see what this looks like on the same scale.
+If we plot the Big O runtime of each function we can see the smooth logarithmic curve of the binary search growing to roughly 16 operations over our 100k item list. The simple search on the other hand has a linear runtime and our 100k item list has a worst case scenario of 100k operations (assuming the item was the last in the list). The difference doesn't look as drastic because the graphs have different scales. Let's see what this looks like on the same scale.
 
 
 ```python
