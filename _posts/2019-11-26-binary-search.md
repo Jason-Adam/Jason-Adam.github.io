@@ -158,7 +158,7 @@ plt.show()
 ```
 
 
-![png](2019-11-26-binary-search_files/2019-11-26-binary-search_12_0.png)
+![png](../imgs/2019-11-26-binary-search_files/2019-11-26-binary-search_12_0.png)
 
 
 On the same scale, the binary search runtime looks like it's flat along the x-axis. Almost immediately the binary search outperforms the simple search!
@@ -178,7 +178,7 @@ plt.show()
 ```
 
 
-![png](2019-11-26-binary-search_files/2019-11-26-binary-search_14_0.png)
+![png](../imgs/2019-11-26-binary-search_files/2019-11-26-binary-search_14_0.png)
 
 
 ## Recap  
