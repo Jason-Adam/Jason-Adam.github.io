@@ -17,6 +17,7 @@ nltk = "*"
 gensim = "*"
 jupyter-contrib-nbextensions = "*"
 blackcellmagic = "*"
+tabulate = "*"
 
 [dev-packages]
 
