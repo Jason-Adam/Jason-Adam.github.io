@@ -14,7 +14,8 @@ Recursion is a fundamental concept in computer science and programming. It can b
 The stack is a simple data structure that encompasses two basic functions.  
 1. Push -> add a new item to the top  
 2. Pop -> remove the top-most item and read it  
-Computer's implement this data structure in the form of the *Call Stack*. The call stack acts as a sort of record in memory for a function call. When a function contains a nested function, the top-level function is paused in a partially completed state until the inner function returns. Only when all inner functions have been satisfied can the top-level function return. Each inner function gets **stacked** on the base function (hence the name) and **popped** once they return.  
+
+Computers implement this data structure in the form of the *Call Stack*. The call stack acts as a sort of record in memory for a function call. When a function contains a nested function, the top-level function is paused in a partially completed state until the inner function returns. Only when all inner functions have been satisfied can the top-level function return. Each inner function gets **stacked** on the base function (hence the name) and **popped** once they return.  
 
 Now that we've defined what a stack is, let's demonstrate both of these concepts with a popular example, [Euclid's Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm). Euclid's Algorithm is a well-known way for computing the greatest common divisor of two numbers, and it is an excellent use-case for recursion.  
 
