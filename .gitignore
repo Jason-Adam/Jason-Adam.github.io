@@ -57,3 +57,4 @@ dmypy.json
 /.DS_Store
 *.csv
 *.xlsx
+*.swp
