@@ -147,4 +147,7 @@ jobs:
           --function-name arn:aws:lambda:us-east-1:880540780340:function:deeplens-smile-inferer
           --zip-file fileb://deeplens-smile-inferer/deeplens_smile_inferer.zip
           --publish
-```
+```  
+
+## Recap  
+The github actions pipelines can be used for a wide number of things. This is just a basic example, but it can be extended rather easily to build docker images, re-deploy kubernetes pods, etc. Take advantage of this free tool offered by github to automate portions of your projects so you can spend more time solving problems.
