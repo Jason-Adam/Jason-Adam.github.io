@@ -10,12 +10,12 @@ Small post about hash tables.
 
 This post aims to explain a basic data structure, the Hash Table. Before jumping into a hash table, we'll start with what a hash function is. In it's simplest state, a hash function maps strings to numbers. We input some string (i.e. "Hello") into a hash function, and we get a number in return (1). The goal of a hash function is to map the same word to the same number consistently and to map different words to different numbers. Below is a simple graphic from Grokking Algorithms that illustrates the point.  
 
-![](../imgs/hash_table1.png)
+![](../imgs/2019-12-18-hash-tables/hash_table1.png)
 
 This becomes useful when we combine it with [arrays](https://jason-adam.github.io/linkedList-arrays/). The hashing function can store the string value that's generated at the index id of an array. Since arrays allow extremely fast random access based on indices, we can retrieve those string values at a later time almost instantly.  Below is another graphic representing this idea.  
 
-![](../imgs/hash_table2.png)  
-![](../imgs/hash_table3.png)
+![](../imgs/2019-12-18-hash-tables/hash_table2.png)  
+![](../imgs/2019-12-18-hash-tables/hash_table3.png)
 
 These two components form our **Hash Table**.  
 
@@ -54,7 +54,7 @@ Hash a large number of use cases. Bhargava [1] lists a few:
 
 The caching example is one that many internet users often overlook. We've all heard **"have you tried clearing your browser cache?"** before, but how many of us actually understand what that means? Our browser saves the representations of websites we freqent so that next time we access them it will be extremely fast because of the fact that our computer (client) doesn't have to make another server call. A simple graphic below displays this nicely.  
 
-![](../imgs/hash_table4.png)
+![](../imgs/2019-12-18-hash-tables/hash_table4.png)
 
 Python has a handy `get` method that you can call on a dictionary to get the value of a **key**. If the key does not exist, a default value of `None` is returned. This is an easy way to check if a value exists, and this is actually how a cache works at a rudimentary level.
 
