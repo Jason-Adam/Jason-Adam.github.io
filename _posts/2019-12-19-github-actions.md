@@ -3,7 +3,7 @@ layout: post
 mathjax: true  
 comments: true  
 title: Github Actions
-tags: [Git]  
+tags: [AWS CI/CD]  
 ---  
 
 Small post on utilizing Github's new CI tool, Github Actions.  
@@ -96,7 +96,7 @@ unzip awscli-bundle.zip
 ./awscli-bundle/install -b ~/bin/aws
 ```  
 
-In the pipeline step, we can use the `run: |` command and put each step on a separate line. The `|` symbol indicates that the lines are seperate commands. Our next command is to zip up our Lambda function. AWS requires your Lambda code be uploaded as a zip file if it's made up of more than one file (i.e. your function has dependencies). Below is how we zip it up.  
+In the pipeline step, we can use the `run: |` command and put each step on a separate line. The `|` symbol indicates that the lines are separate commands. Our next command is to zip up our Lambda function. AWS requires your Lambda code be uploaded as a zip file if it's made up of more than one file (i.e. your function has dependencies). Below is how we zip it up.  
 
 ```bash  
 cd deeplens-smile-inferer  
