@@ -68,6 +68,7 @@ chmod +x decrypt_secret
 
 The full step for decrypting the secrets looks like this.  
 
+{% raw %}
 ```yaml  
 name: Update Lambda Function
 
@@ -86,6 +87,7 @@ jobs:
         env:
           CREDS_PASSPHRASE: ${{ secrets.CREDS_PASSPHRASE }}
 ```  
+{% endraw %}
 
 ## AWS Lambda  
 Now that we've got our AWS credentials securely into our pipeline, let's install the AWS CLI. The following commands can be entered as the next step in the pipeline to pull down the CLI tools.  
@@ -115,6 +117,7 @@ run: >
 
 And that's it! We've successfully set up a github actions pipeline to publish a new version of our lambda function every time we push a change to our master branch! Here's the full yaml for a complete view.  
 
+{% raw %}
 ```yaml  
 name: Update Lambda Function
 
@@ -148,6 +151,7 @@ jobs:
           --zip-file fileb://deeplens-smile-inferer/deeplens_smile_inferer.zip
           --publish
 ```  
+{% endraw %}
 
 ## Recap  
 The github actions pipelines can be used for a wide number of things. This is just a basic example, but it can be extended rather easily to build docker images, re-deploy kubernetes pods, etc. Take advantage of this free tool offered by github to automate portions of your projects so you can spend more time solving problems.
