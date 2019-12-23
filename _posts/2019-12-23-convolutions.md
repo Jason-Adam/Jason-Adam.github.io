@@ -28,13 +28,32 @@ The term "Convolution" is right in the name of the neural network architecture p
 Kernels (or filters) are small square matrices that slide across the image matrix, convolving at each step. What does this really mean? If we reference the image above, we have a small square matrix with pre-specified values that just element-wise multiplication with the image pixel values, then takes the sum. This single sum (i.e. the output value) is stored at the same coordinates as the center of the kernel. The goal of the kernel is to reduce the spatial dimensions of the image and perform some image processing task. Kernels always are an odd sized square matrix so that there is a clear center value (i.e. $3x3$ or $5x5$). Below is a simple example from the book regarding how a kernel slides across the image matrix and performs the convolution. This involves a $3x3$ kernel used for blurring.  
 
 $$
-O_{i,j}=\frac{1}{9}
+O_{i,j}=\frac{1}{9}*\[\begin{bmatrix}
+1&1&1\\
+1&1&1\\
+1&1&1\\
+\end{bmatrix\]*\[\begin{bmatrix}
+93&139&101\\
+26&252&196\\
+135&230&18\\
+\end{bmatrix\]
+$$  
+
+This results in the following matrix after the element-wise multiplication. We can then take the sum.  
+
+$$
+O_{i,j}=\sum \[\begin{bmatrix}
+10.3&15.4&11.2\\
+2.8&&28.0&21.7\\
+15.0&25.5&2.0\\
+\end{bmatrix}\]\approx 132
 $$
 
 There are several common kernels that are used for different processing tasks:  
 
-1. Blurring - self explanatory, blurs the image  
-2. Sharpent - 
+1. Blurring  
+2. Sharpen
+
 
 ## References  
 Rosebrock, A. (2017). Deep Learning for Computer Vision with Python (1.1.0 ed.).
