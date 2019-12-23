@@ -3,7 +3,7 @@ layout: post
 mathjax: true  
 comments: true  
 title: Github Actions
-tags: [AWS CI/CD]  
+tags: [AWS, CI/CD]  
 ---  
 
 Small post on utilizing Github's new CI tool, Github Actions.  
