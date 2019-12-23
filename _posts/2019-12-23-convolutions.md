@@ -52,8 +52,56 @@ $$
 There are several common kernels that are used for different processing tasks:  
 
 1. Blurring  
-2. Sharpen
+2. Sharpen  
+3. Laplacian (detect edge-like regions)  
+4. Sobel (detect edge-like regions along both x and y axis)  
+5. Emboss  
 
+Below is Figure 11.5 from the book that demonstrates the effect these filters have on an image.  
+
+![](../imgs/2019-12-23-convolutions/filter_examples.png)  
+
+Unlike traditional fully-connected standard neural networks, the layers of a CNN are arranged in a 3-dimensional volume (width, height, depth). Depth refers to the channels mentioned above (Grayscale vs RBG) (Rosebrock, 2017, pp. 181). The benefit to this design is that the neurons are only connected to a small region of the layer before it. This is referred to as local connectivity, and it drastically reduces the number of parameters in our network.  
+
+## What are the Layers in a CNN?  
+The most common layers used in Convolutional Neural Networks are:  
+
+1. Convolutional  
+2. Activation  
+3. Pooling  
+4. Fully-connected  
+5. Batch Normalization  
+6. Dropout  
+
+The arrangement of these layers in a specific way results in a CNN.  
+
+### Convolutional Layers  
+Convolutional layers consist of $K$ learnable filters (i.e. kernels). These filters are responsible for creating activation maps as they slide across the image matrix. Below is Figure 11.6 from the book, and it displays this concept. Each kernel is convolved with the input and generates a 2D output called the activation map.  
+
+![](../imgs/2019-12-23-convolutions/activation_map1.png)  
+
+After all $K$ filters have been applied to the input, we then stack the activation maps along the depth dimension of our array to form the final output (image below: Figure 11.7).  
+
+![](../imgs/2019-12-23-convolutions/activation_map2.png)  
+
+Ever entry in the output volume is an output of a neuron that looks at only a small region of the input (Rosebrock, 2017, pp. 182). The network learns filters (kernels) that activate when they see a specific type of feature at a given spatial location. This makes sense if we think back to what a kernel does. This could mean that we've detected an edge or perhaps corner-like regions. This concept relates back to the idea of local connectivity whereby a small filter convolves with a larger input volume. This local region of the input volume that our neuron is connecting to is known as the receptive field (or variable $F$). This can be better illustrated by the example on page 183 (Rosebrock, 2017). Imagine we have an input size of $32x32x3$. If our receptive field is $3x3$, then each neuron in the convolutional layer will connect to a $3x3$ local region of the image resulting in $3x3x3=27$ weights.  
+
+There are three separate parameters that control the size of an output volume:  
+
+1. Depth  
+2. Stride  
+3. Zero-Padding  
+
+#### Depth  
+Depth is simple the number of filters we are learning in the current layer.  
+
+#### Stride  
+Stride refers to the number of pixels we slide the kernel over the input volume. The typical number is 1 or 2 ($S=1$ or $S=2). A stride of 1 results in overlapping receptive fields as the same pixels are convolved multiple times. These also result in larger output volumes. When $S=2$, we skip two pixels at a time resulting in a smaller output volume and non-overlapping receptive fields. Changing the stride of the kernel is a way to reduce the spatial dimensions of the input volumes. Along with pooling, this is the main way to perform this reduction.  
+
+### Zero-Padding  
+Padding the borders of an input volume can/will result in the output volume maintaining the original image size. The most common way of performing this is padding the outside of the matrix with zeros (hence the name). The parameter used for this padding is $P$. Padding becomes very important when we start examining deep CNN architectures where multiple convolutional filters are stacked on top of each other (Rosebrock, 2017, pp. 184). Below is a good example of what this process actually looks like. We are convolving a Laplacian kernel with an input image, but we pad the outside with zeros first so that the resulting output volume matches the original input volume (allows us to preserve spatial dimensions).  
+
+![](../imgs/2019-12-23-convolutions/zero_padding.png)
 
 ## References  
 Rosebrock, A. (2017). Deep Learning for Computer Vision with Python (1.1.0 ed.).
