@@ -84,7 +84,7 @@ After all $K$ filters have been applied to the input, we then stack the activati
 
 ![](../imgs/2019-12-23-convolutions/activation_map2.png)  
 
-Ever entry in the output volume is an output of a neuron that looks at only a small region of the input (Rosebrock, 2017, pp. 182). The network learns filters (kernels) that activate when they see a specific type of feature at a given spatial location. This makes sense if we think back to what a kernel does. This could mean that we've detected an edge or perhaps corner-like regions. This concept relates back to the idea of local connectivity whereby a small filter convolves with a larger input volume. This local region of the input volume that our neuron is connecting to is known as the receptive field (or variable $F$). This can be better illustrated by the example on page 183 (Rosebrock, 2017). Imagine we have an input size of $32x32x3$. If our receptive field is $3x3$, then each neuron in the convolutional layer will connect to a $3x3$ local region of the image resulting in $3x3x3=27$ weights.  
+Every entry in the output volume is an output of a neuron that looks at only a small region of the input (Rosebrock, 2017, pp. 182). The network learns filters (kernels) that activate when they see a specific type of feature at a given spatial location. This makes sense if we think back to what a kernel does. This could mean that we've detected an edge or perhaps corner-like regions. This concept relates back to the idea of local connectivity whereby a small filter convolves with a larger input volume. This local region of the input volume that our neuron is connecting to is known as the receptive field (or variable $F$). This can be better illustrated by the example on page 183 (Rosebrock, 2017). Imagine we have an input size of $32x32x3$. If our receptive field is $3x3$, then each neuron in the convolutional layer will connect to a $3x3$ local region of the image resulting in $3x3x3=27$ weights.  
 
 There are three separate parameters that control the size of an output volume:  
 
@@ -93,15 +93,71 @@ There are three separate parameters that control the size of an output volume:
 3. Zero-Padding  
 
 #### Depth  
-Depth is simple the number of filters we are learning in the current layer.  
+Depth is simply the number of filters we are learning in the current layer.  
 
 #### Stride  
-Stride refers to the number of pixels we slide the kernel over the input volume. The typical number is 1 or 2 ($S=1$ or $S=2). A stride of 1 results in overlapping receptive fields as the same pixels are convolved multiple times. These also result in larger output volumes. When $S=2$, we skip two pixels at a time resulting in a smaller output volume and non-overlapping receptive fields. Changing the stride of the kernel is a way to reduce the spatial dimensions of the input volumes. Along with pooling, this is the main way to perform this reduction.  
+Stride refers to the number of pixels we slide the kernel over the input volume. The typical number is 1 or 2 ($S=1$ or $S=2$). A stride of 1 results in overlapping receptive fields as the same pixels are convolved multiple times. These also result in larger output volumes. When $S=2$, we skip two pixels at a time resulting in a smaller output volume and non-overlapping receptive fields. Changing the stride of the kernel is a way to reduce the spatial dimensions of the input volumes. Along with pooling, this is the main way to perform this reduction.  
 
 ### Zero-Padding  
 Padding the borders of an input volume can/will result in the output volume maintaining the original image size. The most common way of performing this is padding the outside of the matrix with zeros (hence the name). The parameter used for this padding is $P$. Padding becomes very important when we start examining deep CNN architectures where multiple convolutional filters are stacked on top of each other (Rosebrock, 2017, pp. 184). Below is a good example of what this process actually looks like. We are convolving a Laplacian kernel with an input image, but we pad the outside with zeros first so that the resulting output volume matches the original input volume (allows us to preserve spatial dimensions).  
 
-![](../imgs/2019-12-23-convolutions/zero_padding.png)
+![](../imgs/2019-12-23-convolutions/zero_padding.png)  
+
+If we examine all the variables thus far (F, S, P), we can compute the size of an output volume as a function of the input volume size. In order for us to construct a valid convolutional layer, we need to ensure that the result of the following equation is an integer.  
+
+$$  
+(\frac{(W-F+2P)}{S})+1
+$$  
+
+$$
+F=receptive\ field\ size\\
+S=stride\\
+P=zero\ padding
+$$  
+
+If this equation does not result in an integer, it means tha tthe strides are set incorrectly, and the neurons cannot be slide across the input volume in a symmetric way (Rosebrock, 2017, pp. 184).  
+
+### Activation Layers  
+After every convolutional layer we apply a nonlinear activation function. The most commonly used functions are ReLU, ELU, and Leaky ReLU. No "learning" is done within an activation layer. The activation function is applied element-wise so that the output layer is always the same as the input dimension.  
+
+#### ReLU  
+ReLU stands for Rectified Linear Unit, and the function is as follows:  
+
+$$  
+f(x)=max(0,x)
+$$  
+
+The function is zero for negative inputs but linearly increases for positive values (Rosebrock, 2017, pp. 126). Below is a graphical representation of the function.  
+
+![](../imgs/2019-12-23-convolutions/relu_graph.png)  
+
+Activations are performed in-place so there is no need to create a separate output volume. Below is Figure 11.9 from the book that represents applying the above function to an input.  
+
+![](../imgs/2019-12-23-convolutions/relu_example.png)  
+
+ReLU tends to outperform other common activation functions (sigmoid and tanh). Explaining Neural Network basics is outside the scope of this post, but it will be covered in a future write with a more in-depth explanation of activation functions.  
+
+### Pooling Layers  
+Pooling layers are typically used to progressively reduce the spatial size of the input volume. This is done to help reduce the overall parameters of the network and to control overfitting. Max pooling also slides across a volume, and the typical size is a $2x2$ square matrix with a stride of 1. The max value from each stride is taken. A stride of 1 results in overlapping pooling, and a stride of 2 (assuming $2x2$ window) results in non-overlapping pooling. Below is an example from the book regarding max pooling and how it reduces the spatial dimensions.  
+
+![](../imgs/2019-12-23-convolutions/max_pooling.png)  
+
+### Fully-Connected Layers  
+The end of our network typically has 1-2 fully-connected (dense) layers. Each node is connected to all activations in the previous layer. This is normally employed prior to a final classifier that will output class probabilities.  
+
+### Batch Normalization  
+Batch normalization does exactly what the name implies... it normalizes the activations of a given input volume before passing it to the next layer in the network. This is done during training of the network. Batch normalization can greatly reduce the number of epochs required and help stabilize training (learning rate and regularization are less volatile). It also tends to yield lower final loss and a more stable loss curve. The biggest drawback to using batch normalization is that it can greatly extend the actual time it takes to train the network due to the increase in additional computations. The most common place to utilize batch normalization is after the activation function. Intuitively, this makes sense as the ReLU activation function is designed to kill off activations that are less than 0. Normalization implies that zero-center our activations, and this could result in activations being discarded by the ReLU function that weren't originally less than zero.  
+
+Below is how we calculate the normalization.  
+
+$$  
+x=mini-batch\ of\ activations\\
+\hat{x}=normalized
+$$  
+
+$$
+\hat{x_{i}}=\frac{x_{i}-\mu_{\beta}}{\sqrt{\sigma_{\beta}^2+\epsilon}}
+$$
 
 ## References  
 Rosebrock, A. (2017). Deep Learning for Computer Vision with Python (1.1.0 ed.).
