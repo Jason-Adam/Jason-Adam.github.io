@@ -146,9 +146,9 @@ Pooling layers are typically used to progressively reduce the spatial size of th
 The end of our network typically has 1-2 fully-connected (dense) layers. Each node is connected to all activations in the previous layer. This is normally employed prior to a final classifier that will output class probabilities.  
 
 ### Batch Normalization  
-Batch normalization does exactly what the name implies... it normalizes the activations of a given input volume before passing it to the next layer in the network. This is done during training of the network. Batch normalization can greatly reduce the number of epochs required and help stabilize training (learning rate and regularization are less volatile). It also tends to yield lower final loss and a more stable loss curve. The biggest drawback to using batch normalization is that it can greatly extend the actual time it takes to train the network due to the increase in additional computations. The most common place to utilize batch normalization is after the activation function. Intuitively, this makes sense as the ReLU activation function is designed to kill off activations that are less than 0. Normalization implies that zero-center our activations, and this could result in activations being discarded by the ReLU function that weren't originally less than zero.  
+Batch normalization does exactly what the name implies... it normalizes the activations of a given input volume before passing it to the next layer in the network. This is done during training of the network. Batch normalization can greatly reduce the number of epochs required and help stabilize training (learning rate and regularization are less volatile). It also tends to yield lower final loss and a more stable loss curve. The biggest drawback to using batch normalization is that it can greatly extend the actual time it takes to train the network due to the increase in additional computations. The most common place to utilize batch normalization is after the activation function. Intuitively, this makes sense as the ReLU activation function is designed to kill off activations that are less than 0. Normalization implies that we zero-center our activations, and this could result in activations being discarded by the ReLU function that weren't originally less than zero.  
 
-Below is how we calculate the normalization.  
+Below is how we calculate the normalization during training.  
 
 $$  
 x=mini-batch\ of\ activations\\
@@ -157,7 +157,41 @@ $$
 
 $$
 \hat{x_{i}}=\frac{x_{i}-\mu_{\beta}}{\sqrt{\sigma_{\beta}^2+\epsilon}}
+$$  
+
 $$
+\mu_{\beta}=\frac{1}{M}\sum_{i=1}^m x_{i}
+$$  
+
+$$
+\sigma_{\beta}^2 = \frac{1}{m} \sum_{i=1}^m (x_{i} - \mu_{\beta} )^2
+$$  
+
+At testing time we replace the mini-batch $\mu_{\beta}$ and $\sigma_{\beta}$ with their respective running averages computed during the training process. This ensures that the network can still make predictions on images without being biased by the last values calculated in the final mini-batch (Rosebrock, 2017, pp. 189).  
+
+### Dropout  
+Dropout is a very popular regularization technique that is commonly used to reduce overfitting. It was proposed by Geoffrey Hinton in 2012 (Geron, 2019). Dropout proves to be quite simple, yet it typically provides a significant accuracy boost. The variable $p$ represents the dropout rate. The dropout rate refers to randomly disconnecting inputs from the preceeding layer to the next layer in the network. Why does this work? Neurons are not allowed to co-adapt with their neighboring neurons. This means that each neuron needs to be able to stand on its own, and it also ensures that we have multiple redundant nodes that will activate when presented with similar inputs. Why is this important? It allows our network to generalize better! The dropout probability is normally set to $50\%$ and occurs between the fully-connected layers (Rosebrock, 2017, pp. 191). Below is a figure from the Geron book that shows the concept nicely.  
+
+![](../imgs/2019-12-23-convolutions/dropout.png)  
+
+## Pulling It All Together  
+Below is a figure 14-11 from Geron's book that captures the basic architecture of a CNN nicely.  
+
+![](../imgs/2019-12-23-convolutions/cnn_arch_basic.png)  
+
+Below is a list of some **rules of thumb** that you can follow according to Rosebrock (2017).  
+
+1. Inputs to the network must be square so that highly optimzed linear algebra functions can be utilized.  
+2. The input layer should be divisible by two multiple times after the first convolutional layer is applied. This allows for efficient downsampling with the pooling layer.  
+3. Convolutional layers should use smaller filters. $3x3$ and $5x5$ are common. Larger filters can be used on the first convolutional layer if the input size is greater than $200x200$.  
+4. The stride should typically be set to 1 for convolutional layers.  
+5. You should apply zero-padding.  
+6. Apply pooling layers to reduce the spatial dimensions. The common size is a $2x2$ receptive field with a stride equal to 2.  
+7. Use batch-normalization (after activation layer).  
+8. Use dropout between fully-connected layers (typical value is $p=50\%$).  
+
+I hope you enjoyed this write-up and that it might help clarify what a CNN actually is and how it works.
 
 ## References  
-Rosebrock, A. (2017). Deep Learning for Computer Vision with Python (1.1.0 ed.).
+[1] Geron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. OReilly Media, Incorporated.  
+[2] Rosebrock, A. (2017). Deep Learning for Computer Vision with Python (1.1.0 ed.).  
