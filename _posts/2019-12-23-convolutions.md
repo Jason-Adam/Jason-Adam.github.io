@@ -194,4 +194,5 @@ I hope you enjoyed this write-up and that it might help clarify what a CNN actua
 
 ## References  
 [1] Geron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. OReilly Media, Incorporated.  
+
 [2] Rosebrock, A. (2017). Deep Learning for Computer Vision with Python (1.1.0 ed.).  
