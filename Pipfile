@@ -18,6 +18,7 @@ gensim = "*"
 jupyter-contrib-nbextensions = "*"
 blackcellmagic = "*"
 tabulate = "*"
+pydicom = "*"
 
 [dev-packages]
 
