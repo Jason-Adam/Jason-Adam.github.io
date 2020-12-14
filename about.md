@@ -13,7 +13,8 @@ I was born in Texas, but I grew up in Wisconsin. I relocated to Phoenix in 2011 
 
 ### Resume  
 #### Experience  
-* *Sr. Data Analyst - Myndshft from May 2019 to Present*  
+* *Machine Learning Engineer - Aptive Resources from March 2020 to Present*  
+* *Sr. Data Analyst - Myndshft from May 2019 to March 2020*  
 * *Informatics Analyst - Matrix Medical Network from May 2018 to May 2019*  
 * *Sr. Analyst - Evolent Health from April 2017 to April 2018*  
 * *Decision Support Analyst - HonorHealth from November 2015 to March 2017*  
