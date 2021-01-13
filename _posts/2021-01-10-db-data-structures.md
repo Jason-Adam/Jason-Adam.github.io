@@ -51,7 +51,7 @@ The final data structure I want to touch on is the **B-Tree**. I wrote SQL all d
 
 Similar to SSTables, B-Trees keep key-value pairs sorted by key for fast, efficient lookups, but beyond that they differ greatly. B-Trees break the database down into blocks or pages, reading and writing only one page at a time [1]. Each page is identified using an address, allowing pages to refer to one another. For those of you who have studied [Linked Lists](https://jason-adam.github.io/linkedList-arrays/), you'll recognize the pattern of pages pointing each other, but with a B-Tree it's on-disk vs in-memory. This concept is illustrated below (fig 3-6).  
 
-![](../imgs/2021-01-10-db-data-structures/hash-index.png)  
+![](../imgs/2021-01-10-db-data-structures/btree-lookup.png)  
 
 As displayed in the image, the root node in the tree contains references to child pages. Not all keys are present, but rather keys within a range. If a value is not found in the node (page), then we can locate the numer above and below it, use the reference to the child page to move down closer to our value. This process continues until we find our actual value. Each child node has a subset of ranges that allow us to drive down to a terminal node, more commonly known as a leaf node (these are trees afterall).  
 
