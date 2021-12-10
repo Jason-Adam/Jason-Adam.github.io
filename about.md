@@ -13,7 +13,9 @@ I was born in Texas, but I grew up in Wisconsin. I relocated to Phoenix area in 
 
 ### Resume  
 #### Experience  
-* *Machine Learning Engineer - Aptive Resources from March 2020 to Present*  
+* *Software Engineer - Fetch Rewards from May 2021 to Present*  
+* *Sr. Data Engineer - Fetch Rewards from April 2021 - May 2021*  
+* *Machine Learning Engineer - Aptive Resources from March 2020 to March 2021*  
 * *Sr. Data Analyst - Myndshft from May 2019 to March 2020*  
 * *Informatics Analyst - Matrix Medical Network from May 2018 to May 2019*  
 * *Sr. Analyst - Evolent Health from April 2017 to April 2018*  
